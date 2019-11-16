@@ -18,19 +18,6 @@ public class PlayerControllerWSAD : MonoBehaviour
         rb = GetComponent<Rigidbody>(); //get the rigidbody from this playerObject
     }
 
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.collider != null)
-        {
-            isGrounded = true;
-        }
-
-        else
-        {
-            isGrounded = false;
-        }
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -93,7 +80,7 @@ public class PlayerControllerWSAD : MonoBehaviour
         {
             if (isSmall == true) //checks if isSmall is true
             {
-                transform.localScale += new Vector3(2, 2, 2); //if truem make the ball bigger
+                transform.localScale += new Vector3(2, 2, 2); //if true make the ball bigger
             }
             isSmall = false; //changes isSmall to false
         }
@@ -103,21 +90,5 @@ public class PlayerControllerWSAD : MonoBehaviour
             rb.velocity = rb.velocity * 1.0f; //decrease velocity
         }
 
-        RaycastHit hit;
-        Physics.Raycast(gameObject.transform.position, Vector3.down, out hit, 1.5f);
-        //Physics.SphereCast(gameObject.transform.position, .6f, Vector3.down, out hit);
-
-        if(hit.collider != null)
-        {
-            isGrounded = true;
-            if (hit.collider.gameObject.CompareTag("Conveyor"))
-            {
-                rb.AddForce(hit.collider.gameObject.transform.forward);
-            }
-        }
-        else
-        {
-            isGrounded = false;
-        }
     }
 }
