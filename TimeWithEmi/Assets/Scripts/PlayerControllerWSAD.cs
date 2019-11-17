@@ -8,9 +8,7 @@ public class PlayerControllerWSAD : MonoBehaviour
 
     public GameObject cam;
     public float force = 100.0f; //create a force to push the playerObject
-    public float jumpHeight = 50f;
-    bool isSmall = false;
-    public bool isGrounded;
+  
 
     // Start is called before the first frame update
     void Start()
@@ -57,32 +55,6 @@ public class PlayerControllerWSAD : MonoBehaviour
             cameraright = Vector3.Normalize(cameraright);
             rb.AddForce(cameraright * force);
             hasInput = true; //the user has pressed a key
-        }
-
-        if(isGrounded)
-        {
-           if(Input.GetKeyDown(KeyCode.Space))
-            {
-                rb.AddForce(Vector3.up * jumpHeight);
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Period)) //if > is pressed
-        {
-            if (isSmall == false) // checks if isSmall is false
-            {
-                transform.localScale -= new Vector3(2, 2, 2); //if false, make the ball smaller
-            }
-            isSmall = true; //changes isSmall to true
-        }
-
-        if (Input.GetKeyDown(KeyCode.Comma)) // if < is pressed
-        {
-            if (isSmall == true) //checks if isSmall is true
-            {
-                transform.localScale += new Vector3(2, 2, 2); //if true make the ball bigger
-            }
-            isSmall = false; //changes isSmall to false
         }
 
         if (!Input.anyKey)
