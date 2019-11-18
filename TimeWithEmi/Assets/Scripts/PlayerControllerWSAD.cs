@@ -8,7 +8,9 @@ public class PlayerControllerWSAD : MonoBehaviour
 
     public GameObject cam;
     public float force = 100.0f; //create a force to push the playerObject
-  
+   
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,9 @@ public class PlayerControllerWSAD : MonoBehaviour
     void Update()
     {
         bool hasInput = false; //create a local variable to track whether the user has inputed something
+
+
+    
 
         if (Input.GetKey(KeyCode.W))
         { //if the W is pressed
@@ -56,6 +61,7 @@ public class PlayerControllerWSAD : MonoBehaviour
             rb.AddForce(cameraright * force);
             hasInput = true; //the user has pressed a key
         }
+       
 
         if (!Input.anyKey)
         { //if the user hasn't pressed a key
@@ -63,4 +69,6 @@ public class PlayerControllerWSAD : MonoBehaviour
         }
 
     }
+   
+
 }
